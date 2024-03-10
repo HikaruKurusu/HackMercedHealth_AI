@@ -3,6 +3,9 @@ import pyaudio
 import pywhatkit
 import wikipedia
 import webbrowser
+import pygame
+from sys import exit
+import math
 
 def command():
     print("Loading Health GPT")
@@ -20,6 +23,14 @@ def command():
 
 
 if __name__== '__main__':
+    # pygame.init()
+
+    # # creating the window
+    # screen= pygame.display.set_mode((1920,1080))
+    # pygame.display.set_caption("HackMercedHealth_AI")
+    # clock = pygame.time.Clock()
+
+    # background = pygame.transform.scale(pygame.image.load("heatlh.jpg").convert(),(1920,1080))
 
     while True:
         text = command()
