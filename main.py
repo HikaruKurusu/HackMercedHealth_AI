@@ -37,13 +37,13 @@ if __name__== '__main__':
         if "goodbye" in text or "okay bye" in text or "turn off" in text:
             print ('see you later!')
             break
-        if "youtube" in text.lower():
-            # pywhatkit.playonyt("youtube")
-            webbrowser.open_new_tab("https://www.youtube.com")
-        elif "google" in text.lower():
+        # if "youtube" in text.lower():
+        #     # pywhatkit.playonyt("youtube")
+        #     webbrowser.open_new_tab(text)
+        if "heath" in text.lower():
             pywhatkit.search(text)
-        elif "youtube for" in text.lower():
-            pywhatkit.search(text)
+        # elif "youtube for" in text.lower():
+        #     pywhatkit.search(text)
         # text = ""
         # elif "search" in text.lower():
         #     result = wikipedia.summary(text, sentences=2)
