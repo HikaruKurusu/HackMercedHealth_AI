@@ -33,6 +33,7 @@ if __name__== '__main__':
             pywhatkit.search(text)
         elif "youtube for" in text.lower():
             pywhatkit.search(text)
+        text = ""
         # elif "search" in text.lower():
         #     result = wikipedia.summary(text, sentences=2)
         #     print(result)
