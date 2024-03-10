@@ -1,61 +1,32 @@
 import speech_recognition as sr
-import pyaudio
 import pywhatkit
-import wikipedia
-import webbrowser
-import pygame
-from sys import exit
-import math
 
 def command():
     print("Loading Health GPT")
     recorder = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening, say something...")
-        audio = recorder.listen(source)
-
-    text = recorder.recognize_google(audio)
-    print("")
-    print(f"You said: {text}")
-    print("")
-    return text
+        try:
+            audio = recorder.listen(source, timeout=5)
+            text = recorder.recognize_google(audio)
+            print(f"You said: {text}\n")
+            return text.lower()
+        except sr.UnknownValueError:
+            print("Sorry, I couldn't understand your speech.")
+            return ""
+        except sr.RequestError as e:
+            print(f"Error accessing Google Speech Recognition service: {e}")
+            return ""
 
 
 
 if __name__== '__main__':
-    # pygame.init()
-
-    # # creating the window
-    # screen= pygame.display.set_mode((1920,1080))
-    # pygame.display.set_caption("HackMercedHealth_AI")
-    # clock = pygame.time.Clock()
-
-    # background = pygame.transform.scale(pygame.image.load("heatlh.jpg").convert(),(1920,1080))
-
     while True:
         text = command()
         if "goodbye" in text or "okay bye" in text or "turn off" in text:
-            print ('see you later!')
+            print('See you later!')
             break
-        # if "youtube" in text.lower():
-        #     # pywhatkit.playonyt("youtube")
-        #     webbrowser.open_new_tab(text)
-        if "heath" in text.lower():
+        elif any(keyword in text for keyword in ["health", "rash", "medicine", "pain", "sick", "feeling", "aches", "itch", "std"]):
             pywhatkit.search(text)
-        # elif "youtube for" in text.lower():
-        #     pywhatkit.search(text)
-        # text = ""
-        # elif "search" in text.lower():
-        #     result = wikipedia.summary(text, sentences=2)
-        #     print(result)
-        # elif "health" in text.lower():
-        #     result = wikipedia.summary(text, sentences=2)
-        #     print(result)
-        # elif "what does" in text.lower():
-        #     result = wikipedia.summary(text, sentences=2)
-        #     print(result)
-        # elif "how do i know" in text.lower():
-        #     result = wikipedia.summary(text, sentences=2)
-        #     print(result)
-        # else:
-        #     print("sorry i didnt get that say that again")
+        else:
+            print("Keyword not recognized. Please try again.")
