@@ -2,10 +2,13 @@ import pygame
 import speech_recognition as sr
 import pywhatkit
 
-def draw_text(screen, font, text):
+def draw_AI(screen, font, text):
     screen.fill((255, 255, 255))  # Fill the screen with white color
     text_surface = font.render(text, True, (0, 0, 0))  # Render the text with black color
     screen.blit(text_surface, (100, 200))  # Position the text on the screen
+def draw_Person(screen, font, text):
+    text_surface = font.render(text, True, (0, 0, 0))  # Render the text with black color
+    screen.blit(text_surface, (100, 400))  # Position the text on the screen
 
 def command():
     print("Loading Health GPT")
@@ -38,7 +41,7 @@ if __name__ == '__main__':
                 quit()
 
         text = command()
-        if "goodbye" in text or "okay bye" in text or "turn off" in text:
+        if "goodbye" in text or "okay bye" in text or "turn off" in text or "quit" in text:
             print('See you later!')
             break
         elif any(keyword in text for keyword in ["health", "rash", "medicine", "pain", "sick", "feeling", "aches", "itch", "std"]):
@@ -46,6 +49,7 @@ if __name__ == '__main__':
         else:
             print("Keyword not recognized. Please try again.")
 
-        draw_text(screen, font, "Say something related to health....")
+        draw_AI(screen, font, "We are your personal Health Search Engine, please say something related to health")
+        draw_Person(screen, font, text)
         pygame.display.flip()
         clock.tick(30)
