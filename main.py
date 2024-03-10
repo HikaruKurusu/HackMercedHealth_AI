@@ -1,7 +1,6 @@
 import pygame
 import speech_recognition as sr
 import pywhatkit
-import wikipedia
 
 def draw_AI(screen, font, text):
     bg = pygame.image.load("health.jpg")
